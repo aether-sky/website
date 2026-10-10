@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "ui": "stream",
+  "agentGuidance": false,
+  "globalPassThroughEnv": ["ASTRO_TELEMETRY_DISABLED"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env", ".env.*"],
+      "outputs": ["dist/**"],
+      "env": ["SITE_URL"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": ["SITE_URL"]
+    },
+    "preview": {
+      "cache": false,
+      "persistent": true,
+      "env": ["SITE_URL"]
+    }
+  }
+}

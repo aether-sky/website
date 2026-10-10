@@ -1,7 +1,11 @@
 node_modules/
+.turbo/
 dist/
 .astro/
+coverage/
 .env
 .env.*
 !.env.example
 .DS_Store
+Thumbs.db
+*.log

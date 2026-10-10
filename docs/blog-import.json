@@ -1,0 +1,142 @@
+{
+  "description": "Import baseline of all tracked and non-ignored untracked blog files, including uncommitted changes. Generated output, dependencies, caches, local secrets and Git metadata are excluded.",
+  "sourceCommit": "39bcb75d65f2b7ed90df18b881b92fa9302698e1",
+  "sourceStatusAtImport": [
+    " M README.md",
+    " M src/content/posts/i-gave-chatgpt-another-try.md",
+    " M src/styles/global.css",
+    "?? public/animations/"
+  ],
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 34,
+      "sha256": "2b3bf6e0b394abd76522c70ccff2b68500c6b8f68c4a0a6fa5b778da37d419ab"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 71,
+      "sha256": "a02be4182ae514510bc45357b8bbcc43708c9b82eddbbf812af895dbc749e1b9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3081,
+      "sha256": "d363042b6c7b16aa2a9d03101ef4952a3b1a26046cca88c8dbdb8bdc8552f3c4"
+    },
+    {
+      "path": "astro.config.mjs",
+      "bytes": 434,
+      "sha256": "f02251eac0ef5d95512830c82f24ee0019bf362d6c382ed108e72760c3c275f6"
+    },
+    {
+      "path": "package.json",
+      "bytes": 461,
+      "sha256": "1b26834c85a8c4b518d5e3aeb4e10a2addad40efcf9eea42fa1d15b80ca406c4"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 119679,
+      "sha256": "470b9d5e650ba5fa6df8149050c75f806efea1bb7c67b04ae7bf9b0d41dc89a3"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "bytes": 19,
+      "sha256": "d21bb1176ce04defeea4e7f2b31e393a986433d82eaeea315b880920fc93f58c"
+    },
+    {
+      "path": "public/animations/fifty.html",
+      "bytes": 2556407,
+      "sha256": "f04945c0256ec8268be30ec1ecd7079d4850baa4cc095212edd00c3d3e97c039"
+    },
+    {
+      "path": "public/images/fifty/01-fifty-tv-anime.png",
+      "bytes": 1894884,
+      "sha256": "077c663118be661bd64356c68de0704a77330c7580b752121d1fce37b383da3e"
+    },
+    {
+      "path": "public/images/fifty/02-fifty-book-halo.png",
+      "bytes": 2171803,
+      "sha256": "fc82071d87cf9195795e10f0d0682e76d38cf8b9aab20c3cdee59380b6c30668"
+    },
+    {
+      "path": "public/images/fifty/03-fifty-subway.png",
+      "bytes": 2168897,
+      "sha256": "1454a93239922b3ffa0199896812258d985642259d7cd69f61ccd773f8bb7d64"
+    },
+    {
+      "path": "public/images/fifty/04-fifty-watermelons.png",
+      "bytes": 2618431,
+      "sha256": "06c4139e7a7f69e62da03ddab47ee0a0cc5c127d2323fb1a381476615309d0c9"
+    },
+    {
+      "path": "public/images/fifty/05-fifty-pumpkin-moon.png",
+      "bytes": 2310567,
+      "sha256": "e7841d7f94b534f3b734241322c3477285185151d96e9bb6103bc5bd7b48f5ae"
+    },
+    {
+      "path": "scripts/image-attributes.mjs",
+      "bytes": 777,
+      "sha256": "12bdc248f63bc2bbdc7b185d0dd9bfaf5173664e3e73cc2e01a6741bb7b3a7cf"
+    },
+    {
+      "path": "scripts/new-post.mjs",
+      "bytes": 1012,
+      "sha256": "db66c1206056c90bce481e7c5811449edf9bc927a35d18e4d672afc8852240da"
+    },
+    {
+      "path": "src/content.config.ts",
+      "bytes": 365,
+      "sha256": "039f1b4d3d4b952d87e85dd904b282ce63a74e62c739466b8cb6f4028cf60ddc"
+    },
+    {
+      "path": "src/content/posts/i-gave-chatgpt-another-try.md",
+      "bytes": 2802,
+      "sha256": "2c938ca4b6c58b892b005361e74fb45b01586d88117e3c77cbe06cda77f021c2"
+    },
+    {
+      "path": "src/layouts/Base.astro",
+      "bytes": 2116,
+      "sha256": "f2ef4e758a0b91ea0b2688a90d45ab46f54ecb7815687ee2131f732b1f7abe8d"
+    },
+    {
+      "path": "src/lib/posts.ts",
+      "bytes": 217,
+      "sha256": "823adfd1a4cfa07d31f97b96f6a21142804ee2136a70ffa369e4eceb6275fad4"
+    },
+    {
+      "path": "src/pages/404.astro",
+      "bytes": 214,
+      "sha256": "6654ec3cb772b34e32c0f1f5236e7e746318d5da737150d32cc4399c217394e9"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "bytes": 692,
+      "sha256": "eaa90f9c43484e98930b73dc405375c220b0b0136e5fa430a76b74c94f958f54"
+    },
+    {
+      "path": "src/pages/posts/[...id].astro",
+      "bytes": 792,
+      "sha256": "335b378f5397e378a96c1fb6aa5f1a3e57957c8ede0b67f74531a7761c3d73ee"
+    },
+    {
+      "path": "src/pages/rss.xml.ts",
+      "bytes": 977,
+      "sha256": "1ceee6c9db0e9f7907dea4e89f6b4f3815e9608713b4ea672d72e892c8269f12"
+    },
+    {
+      "path": "src/site.ts",
+      "bytes": 269,
+      "sha256": "a53702217f5852f6914798d78d2370fedd957d2e39785a9914a18cf1b67828e8"
+    },
+    {
+      "path": "src/styles/global.css",
+      "bytes": 4863,
+      "sha256": "6dd78b151b811bb0201d4d98b8070776c7852032e39b1c71f9e4a00659e79fb4"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 38,
+      "sha256": "22858cc00baa09a77c1b1c263ea28e59c46ccd1d38ca386cc087d3aa99394a3c"
+    }
+  ]
+}

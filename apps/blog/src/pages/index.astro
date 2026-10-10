@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, dateLabel } from '../site';
+import { publishedPosts } from '../lib/posts';
+const posts = await publishedPosts();
+---
+<Base><section class="intro"><h1>{site.title}.</h1><p>{site.description}</p></section><section class="archive" aria-labelledby="writing"><div class="archive-head"><h2 id="writing">Writing</h2><span>{posts.length} {posts.length === 1 ? 'post' : 'posts'}</span></div><ol class="posts">{posts.map(post=><li><time datetime={post.data.date.toISOString()}>{dateLabel(post.data.date)}</time><div><a href={`/posts/${post.id}/`}>{post.data.title}</a><p>{post.data.description}</p></div></li>)}</ol></section></Base>

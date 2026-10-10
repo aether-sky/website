@@ -1,0 +1,4 @@
+* text=auto eol=lf
+
+# Preserve the imported blog's exact bytes, including existing line endings.
+apps/blog/** -text whitespace=cr-at-eol
