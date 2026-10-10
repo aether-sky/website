@@ -1,0 +1,29 @@
+# aether-sky static publication; main branch only; portable Debian/Caddy
+{$SITE_ADDRESS} {
+    encode zstd gzip
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        -Server
+    }
+
+    # Temporary, so a future deliberate homepage release isn't hidden by caches.
+    @home path / /index.html
+    header @home Cache-Control "no-store"
+    redir @home /blog/ 302
+    redir /blog /blog/ 308
+
+    handle /healthz {
+        respond "ok" 200
+    }
+    handle /blog/* {
+        root * {$SITE_ROOT:/srv/aether-sky/current/public}
+        @private path_regexp private (^|/)\.
+        respond @private 404
+        file_server
+    }
+    # There is deliberately no proxy, chat endpoint, or local settings page.
+    handle {
+        respond "Not found" 404
+    }
+}

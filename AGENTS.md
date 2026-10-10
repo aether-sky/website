@@ -9,7 +9,7 @@
 - Add independently deployable applications under `apps/`, backend services under `services/`, and reusable packages under `packages/`. Use explicit `workspace:*` dependencies; do not import across application internals.
 - Keep application deployment scopes separate. The future public AI editor must not receive repository write access, blog files, blog deployment credentials, or authority to alter shared dependencies used by the blog.
 - The experimental homepage and local ChatGPT OAuth editor exist only on `dev`. Never expose the local OAuth server publicly. Production on `main` serves only static blog files. Repository instructions are not an enforced runtime security boundary.
-- Validate the affected packages through Turborepo. No remote repository or production deployment is configured yet.
+- Validate affected packages through Turborepo. `main` has a static Debian/Caddy release kit; see `docs/vps-deployment.md`. No remote repository or live deployment is configured yet.
 
 ## Accessibility
 

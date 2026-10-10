@@ -4,6 +4,7 @@
   "agentGuidance": false,
   "globalPassThroughEnv": ["ASTRO_TELEMETRY_DISABLED"],
   "tasks": {
+    "//#check:release": { "cache": false, "passThroughEnv": ["CADDY_BIN", "DEPLOY_BASH"] },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env", ".env.*"],

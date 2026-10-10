@@ -2,6 +2,12 @@
 
 This is **main**, the public blog branch. The experimental chat homepage and Python/ChatGPT tools live on **dev**. Only `main` may be published. See [branch workflow](docs/branches.md).
 
+## Publish
+
+Follow [the Linode/Debian runbook](docs/vps-deployment.md) for the $12 Linode VPS. Commit blog and deployment changes on `main`, then run `pnpm release:site https://aether-sky.cloud` (substitute your domain). It produces a blog-only archive; the server redirects `/` to `/blog/`. No Python, LLM key, or coding agent is deployed. Nothing is uploaded automatically.
+
+Use `pnpm build:site https://aether-sky.cloud` for a local artifact without the clean-checkout requirement, and `pnpm test:release` for release-boundary checks through Turborepo.
+
 ## Local development
 
 Use Node.js 24 LTS and pnpm 10.11.0. Install from the repository root:

@@ -9,6 +9,10 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
+    "build:site": "node scripts/public-site.mjs build",
+    "release:site": "node scripts/public-site.mjs release",
+    "test:release": "turbo run check:release",
+    "check:release": "node --test tests/deployment/*.test.mjs",
     "dev:blog": "node scripts/dev-blog.mjs",
     "build:blog": "turbo run build --filter=personal-blog",
     "preview:blog": "turbo run preview --filter=personal-blog",
