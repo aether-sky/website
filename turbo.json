@@ -8,17 +8,22 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env", ".env.*"],
       "outputs": ["dist/**", "dist-site/**"],
-      "env": ["SITE_URL", "BLOG_BASE"]
+      "env": ["SITE_URL", "BLOG_BASE"],
+      "passThroughEnv": ["PYTHON"]
     },
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": ["SITE_URL", "BLOG_BASE"]
+      "env": ["SITE_URL", "BLOG_BASE"],
+      "passThroughEnv": ["PYTHON"]
     },
     "preview": {
       "cache": false,
       "persistent": true,
       "env": ["SITE_URL", "BLOG_BASE"]
-    }
+    },
+    "@website/home-service#build": { "dependsOn": ["^build"], "outputs": [], "passThroughEnv": ["PYTHON"] },
+    "test": { "cache": false, "passThroughEnv": ["PYTHON"] },
+    "test:ui": { "cache": false, "dependsOn": ["^build"], "passThroughEnv": ["PYTHON", "PLAYWRIGHT_CHANNEL"], "outputs": [] }
   }
 }

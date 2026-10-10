@@ -1,0 +1,84 @@
+# Authored chat copy. Each reply may have several randomly selected variants.
+# {theme} is the only substitution, supplied from a validated preset name.
+schema_version = 1
+
+[replies.greeting]
+variants = ["Oh, hi. You’ve landed on aether-sky’s homepage. So, um... how can I help you?"]
+
+[replies.bio]
+variants = ["""
+Sky writes about programming and AI, and shares their work on GitHub as aether-sky. You can say hello at me@aether-sky.cloud.
+
+The résumé blurb hasn’t been added yet, so, um... I’ll leave the career details to Sky."""]
+
+[replies.capabilities]
+variants = ["Oh. There’s Sky’s résumé, blog, GitHub... or you could change something, I guess."]
+
+[replies.change_hint]
+variants = ["Do you see anything you want to change?"]
+
+[replies.task]
+variants = ["Um... I’m not your servant. I’m just a webpage."]
+
+[replies.chat]
+variants = ["Hmm. What do you mean?"]
+
+[replies.blocked]
+variants = ["I can’t help with that."]
+
+[replies.criticism]
+variants = ["Oh, I’m sorry you don’t like it. What would you change about it? Maybe the background color? We could start with a little lilac, if you like."]
+
+[replies.declined]
+variants = ["Okay, yeah. We’ll leave it as it is. What would you rather change?"]
+
+[replies.navigate_blog]
+variants = ["Oh, yeah. Taking you to Sky’s blog now."]
+
+[replies.navigate_portfolio]
+variants = ["Yeah, here’s Sky’s GitHub. The portfolio is the same place. Off we go."]
+
+[replies.no_change]
+variants = ["That’s already how we have it, so I haven’t changed anything."]
+
+[replies.choose_color]
+variants = ["What color are you thinking?"]
+
+[replies.applied_color]
+variants = ["Okay, a little {theme}. Just the background for now."]
+
+[replies.applied_intro]
+variants = ["There. A little headline to give the place a voice. It was very, very quiet in here."]
+
+[replies.applied_magazine]
+variants = ["Oh, that’s a bigger change. A whole magazine-style layout. Getting a little ambitious, aren’t we?"]
+
+[replies.applied_studio]
+variants = ["Okay, a whole little studio, with room for a few different ideas. We started with a color and now we’re rearranging the furniture."]
+
+[replies.suggest_intro]
+variants = ["What about a little headline next? Something soft, like ‘A little corner of the internet.’"]
+
+[replies.suggest_magazine]
+variants = ["Want to try a bigger change? We could turn this into a magazine-style layout."]
+
+[replies.suggest_studio]
+variants = ["We could go bigger still—a studio layout with a few separate sections. Want to try that?"]
+
+[replies.suggest_finished]
+variants = ["What would you change next?"]
+
+[replies.prompt_color]
+variants = ["Maybe a soft lilac background? Or tell me a color you’d rather try."]
+
+[replies.prompt_intro]
+variants = ["I was thinking of a little headline next. Want to try that, or change something else?"]
+
+[replies.prompt_magazine]
+variants = ["We could try that magazine-style layout. Want me to give it a go?"]
+
+[replies.prompt_studio]
+variants = ["A studio with a few sections is the next bigger step. Want to try it?"]
+
+[replies.prompt_start]
+variants = ["Hmm. What do you mean?"]

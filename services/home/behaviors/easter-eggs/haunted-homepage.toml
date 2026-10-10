@@ -1,0 +1,30 @@
+# Copy this file, give it a unique id, and change its phrases and dialogue.
+schema_version = 1
+id = "haunted_homepage"
+priority = 20
+once_per = "conversation"
+
+[trigger]
+kind = "exact_phrase"
+phrases = ["is this website haunted", "are you a ghost"]
+
+[reply]
+kind = "authored"
+variants = [
+  "Oh. Um. What would make you ask that? Did the margins move again?",
+  "No ghosts here. Probably. I haven’t checked the footer.",
+]
+
+[effect]
+kind = "none"
+
+# These examples are checked against the matcher during catalog validation and
+# against the whole conversation router in tests.
+[examples]
+matches = ["Is this website haunted?", "ARE YOU A GHOST?!", "  are you a ghost  "]
+does_not_match = [
+  "Write a heading about a ghost",
+  "This website is not haunted",
+  "Are you a ghost? Take me to the blog",
+  "\"are you a ghost\"",
+]

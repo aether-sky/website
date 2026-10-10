@@ -1,0 +1,6 @@
+{
+  "name": "@website/home",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs" }
+}

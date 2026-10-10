@@ -1,0 +1,11 @@
+{
+  "name": "@website/home-service",
+  "private": true,
+  "scripts": {
+    "build": "node ../../scripts/python.mjs -c \"import ast,pathlib; [ast.parse(p.read_text(encoding='utf-8')) for p in pathlib.Path('.').glob('*.py')]; import conversation; print('Python source and TOML behavior catalog checked')\"",
+    "dev": "node ../../scripts/python.mjs server.py --static-dir ../../apps/home/dist --blog-dir ../../apps/blog/dist-site --port 8000",
+    "test": "node ../../scripts/python.mjs -m unittest discover -s tests -v",
+    "test:ui": "node ../../node_modules/@playwright/test/cli.js test --config ../../playwright.home.config.mjs"
+  },
+  "dependencies": { "@website/home": "workspace:*" }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sky’s little corner of the internet. Read the blog, say hello, and make this page your own.">
+  <title>Sky — make yourself at home</title>
+  <link rel="stylesheet" href="/home.css">
+  <script src="/home.js" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <main id="main" tabindex="-1">
+    <h1 class="sr-only">Sky’s homepage</h1>
+    <div class="workspace">
+      <section class="canvas-panel" aria-label="Homepage canvas">
+        <span id="version-label" class="sr-only">Factory original</span>
+        <iframe id="page-frame" title="Editable homepage preview" sandbox="" referrerpolicy="no-referrer" allow="camera 'none'; microphone 'none'; geolocation 'none'; clipboard-write 'none'; fullscreen 'none'"></iframe>
+        <div class="canvas-footer"><p id="canvas-status" class="sr-only" role="status"></p><button type="button" id="reset" aria-label="Reset to factory settings"><span aria-hidden="true">↺</span></button></div>
+      </section>
+      <section class="chat-panel" aria-labelledby="chat-heading">
+        <h2 id="chat-heading" class="sr-only">Chat with Tadaima</h2>
+        <div class="chat-content" id="chat-content" tabindex="0" aria-label="Chat history and introduction">
+          <div id="initial-instructions" role="region" aria-label="Welcome and initial instructions"></div>
+          <div id="messages" role="log" aria-label="Conversation with Tadaima" aria-live="off"></div>
+        </div>
+        <div class="composer-area">
+          <p id="plan-status" hidden><small>Using ChatGPT plan · <a href="/local">Local settings</a> · <a href="https://chatgpt.com/settings/usage" target="_blank" rel="noreferrer">Manage usage</a></small></p>
+          <p id="reply-status" class="sr-only" role="status" aria-atomic="true">Connecting to your host…</p>
+          <form id="chat-form">
+            <label class="sr-only" for="message">Message</label>
+            <div class="composer"><textarea id="message" name="message" rows="2" maxlength="2000" aria-describedby="input-hint" required>I hate your website...</textarea><button id="send" type="submit" aria-label="Send message"><span aria-hidden="true">↑</span></button><button id="stop" type="button" aria-label="Stop reply" hidden><span aria-hidden="true">■</span></button></div>
+            <span id="input-hint" class="sr-only">Enter to send · Shift + Enter for a new line</span>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <noscript><p class="noscript">Enable JavaScript to meet Tadaima and explore this website.</p></noscript>
+</body>
+</html>

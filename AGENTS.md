@@ -8,7 +8,7 @@
 - `pnpm verify:blog-import` compares the blog against the imported baseline. It is an import audit, not a prohibition on future owner-authorized writing. Do not silently regenerate the baseline to hide differences.
 - Add independently deployable applications under `apps/`, backend services under `services/`, and reusable packages under `packages/`. Use explicit `workspace:*` dependencies; do not import across application internals.
 - Keep application deployment scopes separate. The future public AI editor must not receive repository write access, blog files, blog deployment credentials, or authority to alter shared dependencies used by the blog.
-- The experimental homepage and local ChatGPT OAuth editor exist only on `dev`. Never expose the local OAuth server publicly. Production on `main` serves only static blog files. Repository instructions are not an enforced runtime security boundary.
+- The homepage has a Python-served demo and optional owner-only local ChatGPT OAuth editor in `apps/home` and `services/home`. See `docs/local-llm.md` for its implemented boundary and verification limits. Public deployment, the review queue, and rotation remain planned in `docs/homepage-guardrails.md`. Never expose the local OAuth server publicly. Repository instructions are not an enforced runtime security boundary.
 - Validate the affected packages through Turborepo. No remote repository or production deployment is configured yet.
 
 ## Accessibility

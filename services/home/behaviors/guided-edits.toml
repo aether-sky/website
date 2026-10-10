@@ -1,0 +1,60 @@
+# Reply references point into replies.toml. Effects select renderer-owned presets.
+schema_version = 1
+start = "color"
+default_prompt = "prompt_start"
+finished_suggestion = "suggest_finished"
+accept_phrases = ["yes", "yes please", "yeah", "sure", "okay", "ok", "do it", "go ahead", "sounds good", "that sounds good", "next", "bigger", "go bigger"]
+
+# Pick the next suggestion from the actual resulting layout, including after a
+# direct request that skips steps. "none" means there is no pending suggestion.
+[next_by_layout]
+blank = "none"
+intro = "none"
+magazine = "none"
+studio = "none"
+
+[steps.color]
+effect = "theme"
+priority = 10
+default_theme = "lilac"
+reply = "applied_color"
+prompt = "prompt_color"
+suggestion = "prompt_color"
+ask_words = ["background", "color", "colour"]
+ask_reply = "choose_color"
+
+[steps.color.aliases]
+lilac = ["lilac", "purple", "lavender"]
+forest = ["forest", "green"]
+sunset = ["sunset", "orange", "warm"]
+
+[steps.intro]
+effect = "layout"
+priority = 20
+reply = "applied_intro"
+prompt = "prompt_intro"
+suggestion = "suggest_intro"
+words = ["headline", "heading", "lettering", "typography"]
+phrases = []
+# Preserve an already expanded layout when a small headline change is requested.
+layout_by_current = { blank = "intro", intro = "intro", magazine = "magazine", studio = "studio" }
+
+[steps.magazine]
+effect = "layout"
+priority = 30
+reply = "applied_magazine"
+prompt = "prompt_magazine"
+suggestion = "suggest_magazine"
+words = ["magazine", "layout", "redesign"]
+phrases = ["whole page"]
+layout_by_current = { blank = "magazine", intro = "magazine", magazine = "magazine", studio = "magazine" }
+
+[steps.studio]
+effect = "layout"
+priority = 40
+reply = "applied_studio"
+prompt = "prompt_studio"
+suggestion = "suggest_studio"
+words = ["studio", "sections", "gallery"]
+phrases = []
+layout_by_current = { blank = "studio", intro = "studio", magazine = "studio", studio = "studio" }

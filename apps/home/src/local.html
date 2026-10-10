@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local editor settings</title><link rel="stylesheet" href="/local.css"><script type="module" src="/local.js"></script></head>
+<body><main><p class="eyebrow">Aether Sky · local development</p><h1>Try a real remix.</h1>
+<p>Connect your ChatGPT account to test edits in this browser. Eligible requests use your ChatGPT plan. Each edit sends your request and the current preview HTML to OpenAI.</p>
+<p id="status" role="status">Checking the local session…</p>
+<section id="controls" hidden aria-label="ChatGPT connection">
+<label for="account">ChatGPT account</label><select id="account"><option value="">Add a ChatGPT account</option></select>
+<button id="signin">Continue with ChatGPT</button><button id="signout" hidden>Sign out</button>
+<div id="model-settings" hidden><label for="model">Using ChatGPT plan · model</label><select id="model"></select><p><a href="https://chatgpt.com/settings/usage" target="_blank" rel="noreferrer">Manage usage</a></p></div>
+<p><a class="primary-link" href="/">Open the homepage →</a></p>
+</section>
+<p class="note">This connection is for your loopback-only test server. Generated HTML must pass the page checks before the sandboxed preview changes. A request check plus one draft uses two model requests. Model availability and plan limits are checked by OpenAI.</p>
+<dialog id="welcome" aria-labelledby="welcome-title"><h2 id="welcome-title">You’re using your ChatGPT plan</h2><p>Eligible AI requests in this local editor use your ChatGPT plan. You can manage app access and usage in ChatGPT settings.</p><button id="got-it">Got it</button></dialog>
+</main></body></html>
