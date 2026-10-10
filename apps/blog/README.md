@@ -32,7 +32,25 @@ draft: true
 
 Write standard Markdown below the frontmatter. Put images in `public/images/my-next-article/` and insert them with `![Alt text](/images/my-next-article/photo.png)`. Set `draft: false` to include a post in the site, archive, and RSS. Drafts are excluded in both dev and production. To preview an unpublished article locally, temporarily set it to false; switch it back before deploying. Dates sort newest first; `draft` is the publication switch, not a scheduler.
 
+## Links that open in a new tab
+
+Use attributes immediately after a Markdown link:
+
+```markdown
+[Example](https://example.com){target="_blank"}
+```
+
+The shared Markdown pipeline adds `rel="noopener"` and a screen-reader-only “(opens in new tab)” description. The visible link text stays unchanged. This works in Classic and Storybook. Ordinary links keep their normal behavior. No HTML or manually repeated notice is needed.
+
 ## Customize
+
+### Inline tooltips
+
+```markdown
+:tooltip[artistic structure]{text="Composition, visual hierarchy, and narrative purpose"}
+```
+
+This creates dotted-underlined text without a link destination. Hover, keyboard focus, or tap reveals the explanation; Escape, a second tap, or tapping outside dismisses it. You can move the pointer onto the explanation to read it. Both styles and color modes are supported. Tooltip content is plain text, also exposed as the button's accessible description; keep it brief and put essential information in the article itself.
 
 - `src/site.ts`: blog name and description (currently the neutral name “Notes”).
 - `src/styles/global.css`: the original restrained dark style and optional light theme.

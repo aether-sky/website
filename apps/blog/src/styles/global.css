@@ -7,3 +7,11 @@
 .prose{line-height:1.65}.prose img{display:block;max-width:100%;height:auto;margin:32px auto;border-radius:3px}.prose img[src*="01-fifty"]{max-height:850px;width:auto}.prose a{overflow-wrap:anywhere}.prose h1{font:600 28px system-ui,sans-serif}.post-header h1{max-width:650px}.intro p{color:var(--muted)}.posts li{grid-template-columns:105px 1fr}.posts time{font-size:12px}.site-footer{flex-wrap:wrap}.site-footer a{color:var(--muted)}.skip:not(:focus){left:-10000px;top:auto}.skip:focus{z-index:5;background:var(--bg);padding:8px}.post-header .meta{margin-top:18px}@media(max-width:520px){.posts li{grid-template-columns:1fr;gap:3px}.prose{font-size:18px}.post-header h1{font-size:30px}.shell{width:calc(100% - 36px)}}
 
 .animation-embed{margin:32px 0 12px}.animation-embed iframe{display:block;width:100%;aspect-ratio:16/11;min-height:330px;border:1px solid var(--line);border-radius:4px;background:#080911}
+
+/* Shared keyboard focus: the skip link moves focus into every page. */
+main:focus-visible{outline:2px solid var(--link);outline-offset:6px}
+
+/* One shared style picker; independent of the light/dark preference. */
+.appearance{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:20px;font:12px/1.5 system-ui,sans-serif;color:var(--muted)}
+.appearance select{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--muted);border-radius:4px;padding:7px 10px;max-width:100%;min-width:0}
+.appearance select:focus-visible{outline:2px solid var(--link);outline-offset:5px}

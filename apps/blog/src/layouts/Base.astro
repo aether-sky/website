@@ -1,18 +1,32 @@
 ---
 import '../styles/global.css';
+import '../styles/adventure.css';
+import '../styles/tooltips.css';
 import { site } from '../site';
+import { blogUrl } from '../lib/urls';
 interface Props { title?: string; description?: string; }
 const { title, description = site.description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
-<!doctype html><html lang="en" data-theme="dark"><head>
+<!doctype html><html lang="en" data-theme="dark" data-style="classic"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>{title ? `${title} · ${site.title}` : site.title}</title><meta name="description" content={description}/>
-<link rel="canonical" href={canonical}/><link rel="alternate" type="application/rss+xml" title={site.title} href="/rss.xml"/>
+<link rel="canonical" href={canonical}/><link rel="alternate" type="application/rss+xml" title={site.title} href={blogUrl('/rss.xml')}/>
 <meta property="og:title" content={title || site.title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:type" content={title ? 'article' : 'website'}/>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('blog-theme')||'dark'}catch{}</script>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('blog-theme')==='light'?'light':'dark';document.documentElement.dataset.style=localStorage.getItem('blog-style')==='adventure'?'adventure':'classic'}catch{}</script>
 </head><body><div class="shell"><a class="skip" href="#main">Skip to content</a>
-<header class="site-header"><a class="name" href="/">{site.title}</a><nav class="nav" aria-label="Main navigation"><a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Blog</a><a href="/rss.xml">RSS</a></nav></header>
-<main id="main"><slot/></main><footer class="site-footer"><span>{site.title} · {new Date().getFullYear()}</span><a href="/rss.xml">Subscribe via RSS</a><button class="theme" type="button" aria-label="Switch to light mode">Light mode</button></footer></div>
+<header class="site-header"><a class="name" href={blogUrl()}>{site.title}</a><nav class="nav" aria-label="Main navigation"><a href={blogUrl()} aria-current={Astro.url.pathname === blogUrl() ? 'page' : undefined}>Blog</a><a href={blogUrl('/rss.xml')}>RSS</a></nav></header>
+<div class="appearance"><label for="blog-style">Style</label><select id="blog-style" name="blog-style"><option value="classic">Classic</option><option value="adventure">Storybook</option></select></div>
+<main id="main" tabindex="-1"><slot/></main><footer class="site-footer"><span>{site.title} · {new Date().getFullYear()}</span><a href={blogUrl('/rss.xml')}>Subscribe via RSS</a><a href={blogUrl('/sitemap/')}>Site map</a><button class="theme" type="button" aria-label="Switch to light mode">Light mode</button></footer></div>
 <script>const button=document.querySelector<HTMLButtonElement>('.theme')!;function sync(){const light=document.documentElement.dataset.theme==='light';button.textContent=light?'Dark mode':'Light mode';button.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode');}button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=next;try{localStorage.setItem('blog-theme',next)}catch{}sync()});sync();</script>
+<script>
+const styleSelect = document.querySelector<HTMLSelectElement>('#blog-style')!;
+styleSelect.value = document.documentElement.dataset.style || 'classic';
+styleSelect.addEventListener('change', () => {
+  const style = styleSelect.value === 'adventure' ? 'adventure' : 'classic';
+  document.documentElement.dataset.style = style;
+  try { localStorage.setItem('blog-style', style); } catch {}
+});
+</script>
+<script>import '../scripts/tooltips.js';</script>
 </body></html>

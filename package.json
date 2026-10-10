@@ -9,13 +9,16 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "dev:blog": "turbo run dev --filter=personal-blog",
+    "dev:blog": "node scripts/dev-blog.mjs",
     "build:blog": "turbo run build --filter=personal-blog",
     "preview:blog": "turbo run preview --filter=personal-blog",
     "blog:new": "pnpm --filter personal-blog new-post",
-    "verify:blog-import": "node scripts/verify-blog-import.mjs"
+    "verify:blog-import": "node scripts/verify-blog-import.mjs",
+    "test:a11y": "pnpm build:blog && playwright test --config=playwright.a11y.config.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.64.0",
     "turbo": "2.11.7"
   }
 }

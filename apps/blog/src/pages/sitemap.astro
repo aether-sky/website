@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { blogUrl } from '../lib/urls';
+import { publishedPosts } from '../lib/posts';
+import { readdirSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+const posts = await publishedPosts();
+// Astro runs from the blog package. Include new standalone animations automatically.
+const animationDirectory = resolve('public/animations');
+const animations = readdirSync(animationDirectory).filter(name => name.endsWith('.html')).sort().map(name => ({
+  href: `/animations/${encodeURIComponent(name)}`,
+  title: readFileSync(resolve(animationDirectory, name), 'utf8').match(/<title>([^<]+)<\/title>/i)?.[1] || name,
+}));
+---
+<Base title="Site map"><section class="intro"><h1>Site map</h1></section><div class="prose">
+<p><a href={blogUrl()}>Blog home</a></p>
+<h2>Writing</h2><ul>{posts.map(post => <li><a href={blogUrl(`/posts/${post.id}/`)}>{post.data.title}</a></li>)}</ul>
+<h2>Animations</h2><ul>{animations.map(animation => <li><a href={blogUrl(animation.href)}>{animation.title}</a></li>)}</ul>
+</div></Base>
