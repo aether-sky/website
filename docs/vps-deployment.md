@@ -1,6 +1,6 @@
 # Publish main on a Linode Debian VPS
 
-This deployment serves the static blog only. Caddy redirects `/` to `/blog/`, serves the built blog, and obtains/renews HTTPS certificates. There is no Python service, Node runtime, database, chat API, or LLM key on the VPS. `dev` remains local.
+This deployment serves the static blog only. Caddy redirects `/` to `/blog/`, serves the built blog, and obtains/renews HTTPS certificates. There is no Python web service, Node runtime, database, chat API, or LLM key on the VPS. `dev` remains local. After the first manual activation, use [the CI/CD and domain guide](cicd-and-domain.md) for automatic main-only updates. Its restricted SSH receiver uses system Python as an upload utility.
 
 ## 1. Create the server and DNS
 

@@ -17,8 +17,8 @@ function run(command, args, options = {}) {
 
 try {
   const [action, requestedOrigin] = process.argv.slice(2);
-  if (!['build', 'release'].includes(action) || process.argv.length > 5) throw new Error('Usage: pnpm build:site|release:site https://your-domain');
-  assertMain(run('git', ['branch', '--show-current']));
+  if (!['build', 'release', 'check'].includes(action) || process.argv.length > 5) throw new Error('Usage: node scripts/public-site.mjs build|release|check https://your-domain');
+  if (action !== 'check') assertMain(run('git', ['branch', '--show-current']));
   const origin = publicOrigin(requestedOrigin || process.env.SITE_URL || '');
   if (action === 'release' && run('git', ['status', '--porcelain', '--untracked-files=all', '--', ...inputs])) {
     throw new Error('Commit blog and deployment inputs on main before creating a release.');
@@ -41,7 +41,7 @@ try {
   }
   writeFileSync(path.join(stage, 'COMMIT'), commit + '\n');
   writeFileSync(path.join(stage, 'DOMAIN'), new URL(origin).hostname + '\n');
-  writeFileSync(path.join(stage, 'release.json'), JSON.stringify({ branch: 'main', commit, origin, kind: 'static-blog', builtAt: new Date().toISOString() }, null, 2) + '\n');
+  writeFileSync(path.join(stage, 'release.json'), JSON.stringify({ branch: action === 'check' ? 'ci-check' : 'main', commit, origin, kind: 'static-blog', builtAt: new Date().toISOString() }, null, 2) + '\n');
   const sums = filesBelow(stage).map(name => `${digest(path.join(stage, name))}  ${name}`).join('\n') + '\n';
   writeFileSync(path.join(stage, 'SHA256SUMS'), sums);
   // Reject accidental exposure of a chat app even when ignored dev artifacts remain.

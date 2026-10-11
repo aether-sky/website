@@ -11,4 +11,4 @@ Use `git switch main` for blog publishing, or `git switch dev` for chat developm
 
 Make new blog-only fixes on `main`, then cherry-pick the relevant commits onto `dev`. Deployment configuration and root workspace commands differ intentionally: avoid a blanket merge or copying one branch's root configuration over the other. Promoting the chat is a separate, explicit release decision after its production boundaries are implemented.
 
-No Git remote is configured at this initial split. After adding a remote, push both branches, make `main` the default branch, and restrict any future production automation to `refs/heads/main`. Do not upload `.local-auth`, `.env`, the repository, or Python tools with the public static files.
+The Git remote is `https://github.com/aether-sky/website.git`. Push both branches and make `main` the default branch. The GitHub Actions workflow on `main` restricts publication to `refs/heads/main`; configure its production environment and restricted upload account using [the CI/CD guide](cicd-and-domain.md). Do not upload `.local-auth`, `.env`, the repository, or chat Python tools with the public static files.

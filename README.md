@@ -4,7 +4,7 @@ This is **main**, the public blog branch. The experimental chat homepage and Pyt
 
 ## Publish
 
-Follow [the Linode/Debian runbook](docs/vps-deployment.md) for the $12 Linode VPS. Commit blog and deployment changes on `main`, then run `pnpm release:site https://aether-sky.cloud` (substitute your domain). It produces a blog-only archive; the server redirects `/` to `/blog/`. No Python, LLM key, or coding agent is deployed. Nothing is uploaded automatically.
+Follow [the Linode/Debian runbook](docs/vps-deployment.md) for the $12 Linode VPS, then [configure DNS and GitHub Actions](docs/cicd-and-domain.md). Commit blog and deployment changes on `main`, then run `pnpm release:site https://aether-sky.cloud`. It produces a blog-only archive; the server redirects `/` to `/blog/`. Once configured, GitHub Actions checks and publishes `main` through a restricted SSH upload account. The VPS serves static files with Caddy; no LLM key or coding agent is deployed.
 
 Use `pnpm build:site https://aether-sky.cloud` for a local artifact without the clean-checkout requirement, and `pnpm test:release` for release-boundary checks through Turborepo.
 

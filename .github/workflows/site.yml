@@ -1,0 +1,89 @@
+name: Check and publish static site
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SITE_URL: https://aether-sky.cloud
+  ASTRO_TELEMETRY_DISABLED: '1'
+
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - run: npm install --global pnpm@10.11.0
+      - run: pnpm install --frozen-lockfile
+      - run: sudo apt-get update && sudo apt-get install -y caddy
+      - run: node scripts/public-site.mjs check "$SITE_URL"
+      - run: pnpm test:release
+        env:
+          CADDY_BIN: /usr/bin/caddy
+          DEPLOY_BASH: /bin/bash
+          DEPLOY_PYTHON: /usr/bin/python3
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:a11y
+
+  publish:
+    needs: checks
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: production
+    concurrency:
+      group: production-site
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - run: npm install --global pnpm@10.11.0
+      - run: pnpm install --frozen-lockfile
+      - name: Package the checked main commit
+        run: |
+          git switch -C main "$GITHUB_SHA"
+          pnpm release:site "$SITE_URL"
+      - name: Upload static release through restricted SSH account
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # Skip an obsolete queued release if main advanced during checks.
+          latest=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)
+          if [ "$latest" != "$GITHUB_SHA" ]; then
+            echo 'Main advanced; a newer workflow will publish.'
+            exit 0
+          fi
+          test -n "$DEPLOY_SSH_KEY"
+          test -n "$DEPLOY_KNOWN_HOSTS"
+          umask 077
+          key="$RUNNER_TEMP/site-deploy-key"
+          hosts="$RUNNER_TEMP/site-known-hosts"
+          trap 'rm -f "$key" "$hosts"' EXIT
+          printf '%s\n' "$DEPLOY_SSH_KEY" > "$key"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$hosts"
+          ssh -i "$key" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            -o UserKnownHostsFile="$hosts" -o ConnectTimeout=20 \
+            site-deploy@162.216.16.250 "deploy $GITHUB_SHA" < ".release/site-${GITHUB_SHA:0:12}.tar.gz"
+          test "$(curl --fail --silent --show-error --retry 3 -o /dev/null -w '%{http_code} %{redirect_url}' "$SITE_URL/")" = "302 $SITE_URL/blog/"
+          curl --fail --silent --show-error --retry 3 "$SITE_URL/blog/" > /dev/null
+          test "$(curl --silent --show-error -o /dev/null -w '%{http_code}' "$SITE_URL/api/chat")" = 404
