@@ -31,6 +31,8 @@ The root workspace and lockfile are authoritative. Install dependencies here, no
 
 ## Blog editing and verification
 
+Edit [the landing Markdown](apps/blog/src/content/landing.md) for the introductory blurb. Its frontmatter sets the site title and search/social description; the Markdown body appears above the posts. This file is separate from the articles and does not count as a post.
+
 Use `pnpm blog:new "My next article"` to start a draft. Classic and Storybook appearances share the same articles and accessible controls; see [design notes](docs/myst-riven-style.md).
 
 Run `pnpm test:a11y` after blog UI changes. On Windows with Edge installed, set `$env:PLAYWRIGHT_CHANNEL = 'msedge'`; otherwise install Playwright Chromium first. See [the accessibility audit](docs/accessibility-audit.md) for coverage and unverified manual criteria. Automated passing tests do not establish full WCAG conformance.
