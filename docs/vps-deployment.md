@@ -16,20 +16,15 @@ The setup uses ordinary Debian and Caddy, so it also works on another VPS provid
 
 ## 2. Install Caddy once
 
-SSH to the new server using its IP. Use your configured sudo account, or the initial `root` login for bootstrap. If logged in as root and `sudo` is absent, omit `sudo` from these commands. On the **VPS**, install the official stable package:
+SSH to the new server using its IP. Use your configured sudo account, or the initial `root` login for bootstrap. If logged in as root and `sudo` is absent, omit `sudo` from these commands. On the **VPS**, install Debian's signed Caddy package:
 
 ```sh
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl gnupg
-curl -1sLf https://dl.cloudsmith.io/public/caddy/stable/gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-sudo chmod o+r /usr/share/keyrings/caddy-stable-archive-keyring.gpg /etc/apt/sources.list.d/caddy-stable.list
-sudo apt update
-sudo apt install -y caddy
+sudo apt install -y caddy curl python3
 ```
 
-These follow [Caddy's official Debian installation](https://caddyserver.com/docs/install#debian-ubuntu-raspbian). Its package supplies the unprivileged `caddy` user and systemd service. Install security updates regularly; reboot if the OS requests it.
+The package supplies the unprivileged `caddy` user and systemd service. Debian security updates maintain the distribution package; its version differs from upstream. The upstream [Caddy Debian repository](https://caddyserver.com/docs/install#debian-ubuntu-raspbian) is an alternative, but returned HTTP 402 during this server's setup. Install security updates regularly; reboot if the OS requests it.
 
 ## 3. Build and package locally
 

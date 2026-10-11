@@ -153,7 +153,10 @@ Do not run manual activation concurrently with an automatic upload. Old releases
 retained; periodically remove older ones after checking that they are neither `current`
 nor `previous`. The receiver limits each upload, not total disk usage.
 
-Local verification: seven deployment tests passed with Caddy/Bash/Python, including
-six Python test groups (hostile archive/provenance cases and Linux publication/rollback).
-Live server account setup, GitHub execution, firewall connectivity, and TLS issuance
-still require end-to-end verification after the configuration above.
+Verification on 2026-10-10: seven deployment tests passed with Caddy/Bash/Python,
+including six Python test groups (hostile archive/provenance cases and Linux
+publication/rollback). Actionlint 1.7.12 accepted the workflow. The first release was
+activated on the Debian VPS using Debian's signed Caddy package; the restricted account
+successfully uploaded a release and rejected an arbitrary SSH command. The GitHub
+production environment, main branch restriction, and encrypted secrets were configured.
+GitHub execution, runner firewall connectivity, DNS, and TLS require end-to-end checks.
