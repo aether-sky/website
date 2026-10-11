@@ -134,6 +134,15 @@ The shared Markdown tooltip renders a native button with a dotted underline and 
 
 Regression coverage exercises both styles (Classic and Storybook), both color modes, and 1280px/320px widths, including keyboard traversal, description exposure, tap toggling, hover persistence, dismissal, text escaping, and viewport bounds. Native top-layer popovers prevent axe from resolving overlapping backgrounds: popup contrast is checked independently against its opaque computed background, while the closed state retains the normal axe/rendered-paper contrast checks. Desktop screenshots were visually inspected in both styles. Spoken screen-reader output and physical mobile devices have not been tested for this feature.
 
+## Contrast helper portability
+
+The rendered-paper contrast helper masks foreground focus outlines along with text
+when sampling the background. Linux font metrics exposed a focused tooltip outline
+inside a text Range rectangle; treating that outline as background produced a false
+1:1 ratio. A regression check verifies that outlines are excluded while actual
+black text on a black background still fails. This changes the measurement only,
+not the visible focus indicator. Existing keyboard and focus checks remain enabled.
+
 ## Standards used
 
 - [WCAG 2.2 Recommendation](https://www.w3.org/TR/WCAG22/) — normative criteria and conformance requirements.

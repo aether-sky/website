@@ -35,7 +35,9 @@ export async function checkPaperContrast(page, incomplete) {
     }
     return runs;
   });
-  const png = await page.screenshot({ fullPage: true, style: 'main *{color:transparent!important;-webkit-text-fill-color:transparent!important;text-decoration-color:transparent!important;text-shadow:none!important}' });
+  // Focus outlines are foreground ink too. Font metrics can place a Range's
+  // rectangle across the outline even when the actual glyphs do not overlap it.
+  const png = await page.screenshot({ fullPage: true, style: 'main *{color:transparent!important;-webkit-text-fill-color:transparent!important;text-decoration-color:transparent!important;outline-color:transparent!important;text-shadow:none!important}' });
   const failures = await page.evaluate(async ({ base64, runs }) => {
     const image = new Image(); image.src = 'data:image/png;base64,' + base64; await image.decode();
     const canvas = document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;
