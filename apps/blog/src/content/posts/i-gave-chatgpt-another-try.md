@@ -6,13 +6,13 @@ draft: false
 tags: ["AI", "Art", "Automation", "ChatGPT", "Fifty-chan"]
 ---
 
-I usually have Claude do my job for me, but at work I'm responsible for getting us up to speed on AI, so I have to research other tools too. Today I decided I would give [Chappy](https://www.google.com/search?q=チャッピー+japan){target="_blank"} another try. I have many fond memories in late 2025 of lying in bed in the dark and asking it to help me adjust my [Bristol scores](https://www.google.com/search?q=concrete+to+water+ratios){target="_blank"}. I read recently that Astra was good for desktop automation and wanted to see if we could use that for anything. But, of course, as soon as I learned it has image generation (which Claude lacks), I got distracted having it make me an anime girl.
+I usually have Claude do my job for me, but at work I'm responsible for getting us up to speed on AI, so I have to research other tools too. Today I decided I would give [Chappy](https://www.google.com/search?q=チャッピー+japan){target="_blank"} another try. I have many fond memories in late 2025 of lying in bed in the dark and asking it to help me adjust my [Bristol scores](https://www.google.com/search?q=cement+to+water+ratios){target="_blank"}. I saw that GPT-6 Astra released recently was good for desktop automation and wanted to see if we could use that for anything. But, of course, as soon as I learned it has image generation (which Claude lacks), I got distracted having it make me an anime girl.
 
 This is Fifty-chan, my new OC. She is a rock star pop idol battle maiden. [Jean Paul Gaultier](https://www.youtube.com/watch?v=1jJbsQLkedw){target="_blank"} did her outfit and she has rabies. Try and guess whose blood that is. That's storytelling.
 
 ![Fifty in TV anime style](/images/fifty/01-fifty-tv-anime.png)
 
-I swear I didn't ask ChatGPT to leave one of her labia out; it just decided that on its own.
+I swear I didn't ask ChatGPT to have one of her [vagina bones](https://www.google.com/search?q=vagina+bones+controversy){target="_blank"} completely out; it just decided that on its own.
 
 I wanted to see her in a different pose and give her some special abilities, since her design was a bit plain. Fifty has a halo of books because she is very well-read and intelligent. The books contain recipes with all the story parts removed and all the ads are at the end instead. ChatGPT really wanted to hammer home that she doesn't wear any underwear.
 
